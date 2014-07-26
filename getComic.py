@@ -27,15 +27,9 @@ class ErrorCode(Exception):
         return repr(self.code)
 
 def isLegelUrl(url):
-    legalUrl1 = re.compile(r'^http://ac.qq.com/Comic/[Cc]omicInfo/id/\d+$')
-    legalUrl2 = re.compile(r'^http://m.ac.qq.com/Comic/[Cc]omicInfo/id/\d+$')
-    legalUrl3 = re.compile(r'^http://ac.qq.com/\w+$')
+    legalUrl = re.compile(r'^http://((m.)?ac.qq.com/Comic/[Cc]omicInfo/id/\d+|ac.qq.com/\w+)$')
 
-    if legalUrl1.match(url):
-        return True
-    elif legalUrl2.match(url):
-        return True
-    elif legalUrl3.match(url):
+    if legalUrl.match(url):
         return True
     else:
         return False
